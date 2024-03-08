@@ -17,4 +17,4 @@ MonoBehaviour:
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-hitSounds__UnityEngine.UIElements.ListView
   m_Values:
   - '{}'
-  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":561.0},"firstVisibleIndex":25,"contentPadding":550.0,"contentHeight":1034.0,"anchoredItemIndex":25,"anchorOffset":11.0}}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":187.0},"firstVisibleIndex":8,"contentPadding":176.0,"contentHeight":660.0,"anchoredItemIndex":8,"anchorOffset":11.0}}'
