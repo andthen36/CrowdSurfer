@@ -9,6 +9,29 @@ public class PlayerController : MonoBehaviour
     private Vector2 move, look;
     private float lookRotation;
     public bool grounded;
+    
+    // Reference to the GameManager script
+    public GameManager1 gameManager;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("crowd"))
+        {
+            Vector3 direction = collision.transform.position - transform.position;
+            direction.y = 0; // Ensure the force is applied horizontally
+            direction.Normalize();
+            Rigidbody crowdMemberRb = collision.collider.GetComponent<Rigidbody>();
+            if (crowdMemberRb != null)
+            {
+                crowdMemberRb.AddForce(direction * maxForce, ForceMode.Impulse);
+                // Increase the score by 1 only if the GameManager reference is set
+                if (gameManager != null)
+                {
+                    gameManager.AddScore(1);
+                }
+            }
+        }
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -25,20 +48,6 @@ public class PlayerController : MonoBehaviour
         Jump();
     }
 
-    private void OnCollisionEnter(Collision collision)
-{
-    if (collision.gameObject.CompareTag("crowd"))
-    {
-        Vector3 direction = collision.transform.position - transform.position;
-        direction.y = 0; // Ensure the force is applied horizontally
-        direction.Normalize();
-        Rigidbody crowdMemberRb = collision.collider.GetComponent<Rigidbody>();
-        if (crowdMemberRb != null)
-        {
-            crowdMemberRb.AddForce(direction * maxForce, ForceMode.Impulse);
-        }
-    }
-}
     private void FixedUpdate()
     {
         Move();
